@@ -1,72 +1,715 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D. Baumgart - Autorin & Künstlerin</title>
-<link rel="stylesheet" href="style.css">
-<!-- Google Fonts für eine kreative, aber ordentliche Schrift -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburg Jeans – Dein Jeans-Spezialist vor Ort in Hamburg</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            950: '#0b132b',
+                            900: '#1c2541',
+                            800: '#2a3b5c',
+                            600: '#3a506b',
+                            500: '#486581',
+                        },
+                        leather: {
+                            500: '#c87d55',
+                            600: '#a65b32',
+                            700: '#844220',
+                        },
+                        sand: '#f8f6f0',
+                        denimLight: '#edf2f7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f6f0;
+            color: #1c2541;
+        }
+        .font-serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8f6f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3a506b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1c2541;
+        }
+    </style>
 </head>
-<body>
-<!-- Header / Startbereich -->
-<header class="hero">
-<h1>D. Baumgart</h1>
-<p class="subtitle">Geschichten, die das Herz berühren, und Farben, die die Seele baumeln lassen.</p>
-</header>
-<main>
-<!-- Über mich Sektion -->
-<section class="about-section">
-<h2>Über mich</h2>
-<div class="about-content">
-<div class=<!-- Portraitfoto -->
-<img src="doreen.jpeg" ></div>
-<div class="about-text">
-<h3>Hallo, ich bin Doreen Baumgart!</h3>
-<p>Schon seit ich denken kann, begleiten mich große Leidenschaften: das erfinden von Geschichten, das Malen und zeichnen von Bildern. Für mich fließen Fantasie und Kreativität auf wundersame Weise ineinander. Wenn ich nicht gerade an neuen Buchwelten tüftele, findet man mich oft mit dem Pinsel oder Bleistift in der Hand. Ich lade dich herzlich ein, in meine kleine, bunte Welt einzutauchen!</p>
-</div>
-</div>
-</section>
-<!-- Bücher Sektion -->
-<section class="books-section">
-<h2>Meine Bücher & Werke</h2>
-<!-- Buch 1 -->
-<div class="book-card">
-<div class="book-info">
-<h3>Kater Milo's Abenteuer</h3>
-<p class="book-description">Begleite den neugierigen Kater Milo auf seinen aufregenden Streifzügen durch eine Fantasievolle Welt. Eine herzerwärmende Geschichte voller kleinen Entdeckungen, Freundschaft und Mut für Groß und Klein.</p>
-</div>
-<!-- Kater Milo - Bilder -->
-<div class="book-gallery">
-  <img src="kater-milo-1.jpeg" >
-  <img src="kater-milo-2.jpeg" >
-  <img src="kater-milo-3.jpeg" >
-</div>
-</div>
-</div>
-<!-- Buch 2 -->
-<div class="book-card">
-<div class="book-info">
-<h3>Malbuch zum Entspannen & Relaxen</h3>
-<p class="book-description">Nimm dir eine Auszeit vom Alltag! Dieses liebevoll gestaltete Malbuch bietet dir wunderschöne, beruhigende Motive und Sprüchen zum Ausmalen. Perfekt, um den Kopf freizubekommen und die eigene Kreativität frei zu entfalten.</p>
-</div>
-<!-- Malbuch - Bilder -->
-<div class="book-gallery">
-  <img src="malbuch-1.jpeg" >
-  <img src="malbuch-2.jpeg" >
-  <img src="malbuch-3.jpeg" >
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer>
-<div class="footer-content">
-<p>© 2026 D. Baumgart. Alle Rechte vorbehalten.</p>
-<div class="social-links">
-<a href="https://www.tiktok.com" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.pinterest.com" target="_blank" rel="noopener">Pinterest</a>
-</div>
-</div>
-</footer>
+<body class="flex flex-col min-h-screen relative selection:bg-leather-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-indigo-950 text-white shadow-xl border-b border-indigo-900/50 backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" onclick="navigateTo('home')" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-leather-600 text-white rounded-md flex items-center justify-center font-bold text-xl tracking-tighter shadow-md group-hover:bg-leather-500 transition border border-leather-500">
+                        HJ
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif-heading font-bold text-xl tracking-wide text-white uppercase">Hamburg Jeans</span>
+                        <span class="text-[10px] text-leather-500 tracking-widest uppercase font-medium">Seit 1982 • Echt vor Ort</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition hover:text-leather-500 hover:bg-white/5">Startseite</button>
+                    <button onclick="navigateTo('service')" id="nav-service" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition hover:text-leather-500 hover:bg-white/5">Service & Fit-Finder</button>
+                    <button onclick="navigateTo('store')" id="nav-store" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition hover:text-leather-500 hover:bg-white/5">Store & Anfahrt</button>
+                    <button onclick="navigateTo('about')" id="nav-about" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition hover:text-leather-500 hover:bg-white/5">Über Uns</button>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="openBookingModal()" class="bg-leather-600 hover:bg-leather-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition duration-200 shadow-md hover:shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Termin Vereinbaren
+                    </button>
+                </div>
+
+                <!-- Hamburger Button Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-indigo-900 focus:outline-none" aria-label="Menü öffnen">
+                        <svg id="menu-icon-open" class="h-6 w-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-indigo-900 border-b border-indigo-800">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <button onclick="navigateTo('home')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-indigo-800">Startseite</button>
+                <button onclick="navigateTo('service')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-indigo-800">Service & Fit-Finder</button>
+                <button onclick="navigateTo('store')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-indigo-800">Store & Anfahrt</button>
+                <button onclick="navigateTo('about')" class="mobile-nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-indigo-800">Über Uns</button>
+                <div class="pt-4">
+                    <button onclick="openBookingModal()" class="w-full bg-leather-600 hover:bg-leather-500 text-white px-4 py-3 rounded-lg font-medium text-center shadow">
+                        Termin Buchen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section active">
+            <!-- Hero Section -->
+            <div class="relative bg-indigo-950 text-white overflow-hidden">
+                <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1920&q=80" alt="Denim Textur" class="w-full h-full object-cover">
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
+                    <div class="max-w-2xl">
+                        <span class="inline-block bg-leather-600/30 text-leather-500 border border-leather-600/50 text-xs px-3.5 py-1.5 rounded-full font-semibold uppercase tracking-wider mb-6">
+                            Gegen den Online-Einheitsbrei
+                        </span>
+                        <h1 class="font-serif-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                            Die perfekte Jeans kauft man <span class="italic text-leather-500">nicht</span> per Klick.
+                        </h1>
+                        <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                            Vergiss Fehlkäufe und lästige Retouren. Bei **Hamburg Jeans** erleben Sie echte Passform-Expertise, persönliche Beratung und Denim-Leidenschaft direkt vor Ort mitten in Hamburg.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="navigateTo('store')" class="bg-leather-600 hover:bg-leather-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition flex items-center justify-center gap-3 group">
+                                <span>Besuche unseren Store</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </button>
+                            <button onclick="navigateTo('service')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-xl font-semibold backdrop-blur-sm transition flex items-center justify-center gap-2">
+                                <span>Interaktiver Fit-Finder</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner Strip -->
+                <div class="bg-indigo-900 border-t border-indigo-800/80 py-4 relative z-10">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs sm:text-sm text-gray-300 font-medium">
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-leather-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Über 40 Jahre Expertise</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-leather-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Hauseigene Schneiderrei</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-leather-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Marken-Vielfalt & Nachhaltigkeit</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-leather-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>100% Persönliche Beratung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stationary First Pillar Section -->
+            <div class="py-20 bg-sand">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-leather-600 mb-3">Warum zu uns?</h2>
+                        <p class="font-serif-heading text-3xl sm:text-4xl font-bold text-indigo-950">Der Unterschied zwischen "Online bestellt" und "Perfekt sitzend"</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-indigo-50 text-indigo-900 rounded-xl flex items-center justify-center mb-6">
+                                    <svg class="w-7 h-7 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                </div>
+                                <h3 class="font-serif-heading text-xl font-bold text-indigo-950 mb-3">Echte Jeans-Berater</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm mb-6">
+                                    Unsere Experten sehen oft auf den ersten Blick, welche Leibhöhe, Waschung und welcher Schnitt Deine Figur optimal in Szene setzt.
+                                </p>
+                            </div>
+                            <span class="text-xs font-semibold text-leather-600 uppercase tracking-wider">Erfahrung & Geschultes Auge</span>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-indigo-50 text-indigo-900 rounded-xl flex items-center justify-center mb-6">
+                                    <svg class="w-7 h-7 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 0L4 4m5.121 5.121L4 19"></path></svg>
+                                </div>
+                                <h3 class="font-serif-heading text-xl font-bold text-indigo-950 mb-3">Sofortige Anpassung</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm mb-6">
+                                    Jeans zu lang? Keine Sorge. Mit unserer eigenen Schneiderwerkstatt kürzen wir Deine neue Lieblingsjeans oft direkt oder innerhalb weniger Tage.
+                                </p>
+                            </div>
+                            <span class="text-xs font-semibold text-leather-600 uppercase tracking-wider">Hauseigener Ändereungsservice</span>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 bg-indigo-50 text-indigo-900 rounded-xl flex items-center justify-center mb-6">
+                                    <svg class="w-7 h-7 text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <h3 class="font-serif-heading text-xl font-bold text-indigo-950 mb-3">Stoffe spüren & anprobieren</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm mb-6">
+                                    Erlebe die Qualität echter Selvedge-Denims, elastischer Komfort-Mischungen und nachhaltiger Bio-Baumwolle direkt auf der Haut.
+                                </p>
+                            </div>
+                            <span class="text-xs font-semibold text-leather-600 uppercase tracking-wider">Haptik & Qualität</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teaser Store Impression / Call to Action -->
+            <div class="bg-indigo-900 text-white py-16 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div class="lg:w-1/2">
+                        <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold mb-4">Lust auf ein entspanntes Einkaufserlebnis?</h2>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Besuche uns im Herzen von Hamburg. Bei einem echten Hamburger Kaffee oder Kaltgetränk finden wir ohne Stress die Jeans, die wie gegossen sitzt.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="navigateTo('store')" class="bg-leather-600 hover:bg-leather-500 text-white px-6 py-3 rounded-lg font-semibold transition">
+                                Anfahrt & Öffnungszeiten
+                            </button>
+                            <button onclick="openBookingModal()" class="bg-transparent hover:bg-white/10 text-white border border-white/30 px-6 py-3 rounded-lg font-semibold transition">
+                                Beratungstermin Buchen
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80" alt="Hamburg Jeans Store Innenansicht" class="w-full h-72 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-indigo-950/80 to-transparent flex items-end p-6">
+                                <span class="text-sm font-medium text-white/90">Echte Atmosphäre im Hamburger Ladenlokal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-center font-serif-heading text-3xl font-bold text-indigo-950 mb-12">Das sagen unsere Hamburger Kundinnen & Kunden</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-sand p-6 rounded-xl border border-gray-200">
+                            <div class="flex text-amber-500 mb-3">★★★★★</div>
+                            <p class="text-gray-700 italic text-sm mb-4">"Endlich eine Jeans, die an der Taille nicht absteht! Die Beratung war fantastisch – in 15 Minuten hatte ich 2 perfekte Hosen."</p>
+                            <div class="font-semibold text-xs text-indigo-950">– Sarah M. aus Eimsbüttel</div>
+                        </div>
+                        <div class="bg-sand p-6 rounded-xl border border-gray-200">
+                            <div class="flex text-amber-500 mb-3">★★★★★</div>
+                            <p class="text-gray-700 italic text-sm mb-4">"Ich hasse Jeans-Kaufen eigentlich. Bei Hamburg Jeans wurde mir direkt die richtige Größe gereicht. Super entspannt!"</p>
+                            <div class="font-semibold text-xs text-indigo-950">– Jan B. aus Altona</div>
+                        </div>
+                        <div class="bg-sand p-6 rounded-xl border border-gray-200">
+                            <div class="flex text-amber-500 mb-3">★★★★★</div>
+                            <p class="text-gray-700 italic text-sm mb-4">"Toller Service! Meine Jeans wurde innerhalb von 2 Stunden direkt im Laden gekürzt, während ich einen Kaffee trinken war."</p>
+                            <div class="font-semibold text-xs text-indigo-950">– Michael K. aus Winterhude</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: SERVICE & FIT-FINDER ================= -->
+        <section id="page-service" class="page-section">
+            <div class="bg-indigo-950 text-white py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="font-serif-heading text-3xl sm:text-4xl font-bold mb-3">Service & Interaktiver Fit-Finder</h1>
+                    <p class="text-gray-300">Finde deinen perfekten Schnitt vorab und lass dich im Laden persönlich begleiten.</p>
+                </div>
+            </div>
+
+            <!-- Fit Finder Quiz Widget -->
+            <div class="py-12 max-w-4xl mx-auto px-4">
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                    <div class="bg-indigo-900 text-white px-6 py-4 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-leather-500 rounded-full inline-block"></span>
+                            <h2 class="font-semibold text-lg">Jeans Fit-Finder Quiz</h2>
+                        </div>
+                        <span class="text-xs bg-indigo-800 px-3 py-1 rounded-full text-gray-300">In 3 Schritten zur Empfehlung</span>
+                    </div>
+
+                    <div class="p-6 sm:p-10" id="fit-finder-container">
+                        <!-- Step 1: Gender & Fit Goal -->
+                        <div id="quiz-step-1" class="quiz-step">
+                            <h3 class="text-xl font-bold text-indigo-950 mb-6">1. Für wen suchen wir heute die perfekte Jeans?</h3>
+                            <div class="grid grid-cols-2 gap-4 mb-8">
+                                <button onclick="selectQuizOption('gender', 'damen')" class="quiz-btn border-2 border-gray-200 p-6 rounded-xl hover:border-leather-500 focus:border-leather-600 transition text-center font-medium">
+                                    <span class="block text-2xl mb-2">👩</span>
+                                    <span>Damen-Kollektion</span>
+                                </button>
+                                <button onclick="selectQuizOption('gender', 'herren')" class="quiz-btn border-2 border-gray-200 p-6 rounded-xl hover:border-leather-500 focus:border-leather-600 transition text-center font-medium">
+                                    <span class="block text-2xl mb-2">👨</span>
+                                    <span>Herren-Kollektion</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Preferred Style -->
+                        <div id="quiz-step-2" class="quiz-step hidden">
+                            <h3 class="text-xl font-bold text-indigo-950 mb-6">2. Welchen Schnitt / Fit bevorzugst du?</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                <button onclick="selectQuizOption('fit', 'skinny')" class="quiz-btn border-2 border-gray-200 p-5 rounded-xl hover:border-leather-500 transition text-center">
+                                    <span class="font-bold text-indigo-950 block mb-1">Slim / Skinny</span>
+                                    <span class="text-xs text-gray-500">Körpernah & Figurbetont</span>
+                                </button>
+                                <button onclick="selectQuizOption('fit', 'straight')" class="quiz-btn border-2 border-gray-200 p-5 rounded-xl hover:border-leather-500 transition text-center">
+                                    <span class="font-bold text-indigo-950 block mb-1">Straight / Regular</span>
+                                    <span class="text-xs text-gray-500">Klassisch gerader Schnitt</span>
+                                </button>
+                                <button onclick="selectQuizOption('fit', 'relaxed')" class="quiz-btn border-2 border-gray-200 p-5 rounded-xl hover:border-leather-500 transition text-center">
+                                    <span class="font-bold text-indigo-950 block mb-1">Relaxed / Wide Leg</span>
+                                    <span class="text-xs text-gray-500">Lässig & Weit geschnitten</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Result Recommendation -->
+                        <div id="quiz-result" class="quiz-step hidden text-center py-4">
+                            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-indigo-950 mb-2">Deine Passform-Empfehlung liegt bereit!</h3>
+                            <p class="text-gray-600 mb-6 max-w-md mx-auto" id="quiz-result-text">
+                                Basierend auf deinen Angaben haben wir verschiedene Modelle von Top-Marken vorrätig im Store.
+                            </p>
+                            <div class="bg-sand p-6 rounded-xl border border-gray-200 mb-8 max-w-lg mx-auto text-left">
+                                <h4 class="font-bold text-indigo-950 mb-2 text-sm uppercase">Nächster Schritt für den perfekten Fit:</h4>
+                                <p class="text-sm text-gray-700 mb-4">Komm einfach kurz bei uns im Laden vorbei. Unsere Berater legen dir passenden Modelle direkt in die Umkleidekabine bereit.</p>
+                                <button onclick="openBookingModal()" class="w-full bg-leather-600 hover:bg-leather-500 text-white font-medium py-3 rounded-lg transition">
+                                    Termin für Anprobe sichern
+                                </button>
+                            </div>
+                            <button onclick="resetQuiz()" class="text-xs text-indigo-900 underline">Quiz erneut starten</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Details Grid -->
+            <div class="py-12 bg-sand">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="font-serif-heading text-3xl font-bold text-indigo-950 text-center mb-12">Unsere Vor-Ort-Services</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 flex gap-6">
+                            <div class="text-leather-600 text-4xl">✂️</div>
+                            <div>
+                                <h3 class="font-serif-heading text-xl font-bold text-indigo-950 mb-2">Hauseigene Änderungsschneiderei</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Ob Beinlänge anpassen, Bund enger nähen oder kleine Reparaturen: Unsere professionelle Schneiderin sorgt dafür, dass deine Jeans exakt auf deine Maße sitzt.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200 flex gap-6">
+                            <div class="text-leather-600 text-4xl">☕</div>
+                            <div>
+                                <h3 class="font-serif-heading text-xl font-bold text-indigo-950 mb-2">Entpannte VIP-Beratung</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Keine Hektik, kein Schlangenstehen. Genieße ein kühles Getränk oder einen frischen Espresso, während wir gemeinsam nach deiner neuen Lieblingsjeans suchen.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: STORE & ANFAHRT ================= -->
+        <section id="page-store" class="page-section">
+            <div class="bg-indigo-950 text-white py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="font-serif-heading text-3xl sm:text-4xl font-bold mb-3">Der Store & Anfahrt</h1>
+                    <p class="text-gray-300">Besuche uns mitten im Herzen von Hamburg. Wir freuen uns auf dich!</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Store Information -->
+                    <div class="space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <h2 class="font-serif-heading text-2xl font-bold text-indigo-950 mb-6 flex items-center gap-3">
+                                <svg class="w-6 h-6 text-leather-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Adresse & Kontakt
+                            </h2>
+                            <address class="not-italic text-gray-700 leading-relaxed space-y-2 mb-6">
+                                <p class="font-semibold text-indigo-950 text-lg">Hamburg Jeans Store</p>
+                                <p>Mönckebergstraße 12 (Beispielstraße)</p>
+                                <p>20095 Hamburg</p>
+                                <p class="pt-2">☎ Telefon: <a href="tel:04012345678" class="text-leather-600 hover:underline">040 / 123 45 678</a></p>
+                                <p>✉ E-Mail: <a href="mailto:moin@hamburg-jeans.de" class="text-leather-600 hover:underline">moin@hamburg-jeans.de</a></p>
+                            </address>
+                        </div>
+
+                        <!-- Opening Hours -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <h2 class="font-serif-heading text-2xl font-bold text-indigo-950 mb-6 flex items-center gap-3">
+                                <svg class="w-6 h-6 text-leather-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Öffnungszeiten
+                            </h2>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex justify-between pb-2 border-b border-gray-100">
+                                    <span class="font-medium text-gray-600">Montag – Freitag:</span>
+                                    <span class="font-bold text-indigo-950">10:00 – 19:00 Uhr</span>
+                                </li>
+                                <li class="flex justify-between pb-2 border-b border-gray-100">
+                                    <span class="font-medium text-gray-600">Samstag:</span>
+                                    <span class="font-bold text-indigo-950">10:00 – 18:00 Uhr</span>
+                                </li>
+                                <li class="flex justify-between text-gray-400">
+                                    <span>Sonntag:</span>
+                                    <span>Geschlossen</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Parking & Transit -->
+                        <div class="bg-indigo-900 text-white p-8 rounded-2xl">
+                            <h3 class="font-bold text-lg mb-3">Anreise & Parken</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                                🚇 **ÖPNV:** U-Bahn U1/U3 Hauptbahnhof oder Jungfernstieg (nur 3 Minuten Fußweg).<br>
+                                🚗 **PKW:** Parkhaus Gertrudenstraße direkt um die Ecke.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Map Preview Simulation -->
+                    <div class="flex flex-col h-full">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 h-full flex flex-col">
+                            <h3 class="font-bold text-indigo-950 mb-4 px-2">Standort auf der Karte</h3>
+                            <div class="relative bg-gray-200 rounded-xl overflow-hidden flex-grow min-h-[350px] border border-gray-300">
+                                <!-- Styled Simulated Map Component -->
+                                <div class="absolute inset-0 bg-[#e5e3df] flex flex-col items-center justify-center p-6 text-center">
+                                    <svg class="w-16 h-16 text-leather-600 mb-3 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                                    <h4 class="font-serif-heading font-bold text-xl text-indigo-950 mb-1">Hamburg Jeans Flagship Store</h4>
+                                    <p class="text-xs text-gray-600 mb-4">Mönckebergstraße 12, 20095 Hamburg</p>
+                                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-indigo-950 hover:bg-indigo-900 text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition shadow">
+                                        <span>In Google Maps öffnen</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: ÜBER UNS ================= -->
+        <section id="page-about" class="page-section">
+            <div class="bg-indigo-950 text-white py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="font-serif-heading text-3xl sm:text-4xl font-bold mb-3">Über Uns & Unsere Philosophie</h1>
+                    <p class="text-gray-300">Seit über 40 Jahren die Adresse für echten Denim in Hamburg.</p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+                <!-- Story Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-xs font-bold text-leather-600 tracking-widest uppercase block mb-2">Unsere Geschichte</span>
+                        <h2 class="font-serif-heading text-3xl font-bold text-indigo-950 mb-4">Aus Liebe zum blauen Stoff</h2>
+                        <p class="text-gray-600 leading-relaxed mb-4 text-sm">
+                            Gegründet im Jahr 1982 als kleiner familiärer Jeans-Laden in Hamburg, haben wir uns konsequent gegen den anonymen Massenmarkt entschieden.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Wir glauben daran, dass eine Jeans mehr ist als nur ein Kleidungsstück: Sie ist ein treuer Begleiter fürs Leben, der mit den Jahren und jeder Faltung deinen persönlichen Charakter widerspiegelt.
+                        </p>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=800&q=80" alt="Jeans Handwerk" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+
+                <!-- Sustainability / Quality -->
+                <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-sm border border-gray-200">
+                    <div class="max-w-3xl mx-auto text-center space-y-4">
+                        <span class="text-3xl">🌱</span>
+                        <h2 class="font-serif-heading text-2xl font-bold text-indigo-950">Nachhaltigkeit durch Langlebigkeit</h2>
+                        <p class="text-gray-600 leading-relaxed text-sm">
+                            Die nachhaltigste Jeans ist die, die du jahrelang gerne trägst. Wir wählen unsere Marken nach strengen Qualitätskriterien, fairen Produktionsbedingungen und hochwertigen Baumwollstandards aus. Statt Fast-Fashion setzen wir auf Reparatur, Pflegetipps und zeitlose Passformen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-indigo-950 text-white border-t border-indigo-900 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+            <div>
+                <h3 class="font-serif-heading font-bold text-lg mb-4 text-leather-500">Hamburg Jeans</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Dein lokaler Fachhändler für hochwertige Jeans, individuelle Beratung und perfektes Handwerk mitten in Hamburg.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-gray-200">Navigation</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><button onclick="navigateTo('home')" class="hover:text-white">Startseite</button></li>
+                    <li><button onclick="navigateTo('service')" class="hover:text-white">Service & Fit-Finder</button></li>
+                    <li><button onclick="navigateTo('store')" class="hover:text-white">Der Store & Anfahrt</button></li>
+                    <li><button onclick="navigateTo('about')" class="hover:text-white">Über Uns</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-gray-200">Kontakt</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Hamburg Jeans Store<br>
+                    Mönckebergstraße 12<br>
+                    20095 Hamburg<br>
+                    Tel: 040 / 123 45 678
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-gray-200">Kein Online-Shop</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Wir verzichten bewusst auf E-Commerce. Besuche uns im Laden für das beste Einkaufserlebnis!
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-indigo-900 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Hamburg Jeans. Alle Rechte vorbehalten. Web-Relaunch Projekt.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: TERMIN BUCHEN -->
+    <div id="booking-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-gray-100 transform transition-all">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div id="modal-form-content">
+                <h3 class="font-serif-heading text-2xl font-bold text-indigo-950 mb-2">Beratungstermin Buchen</h3>
+                <p class="text-gray-600 text-xs mb-6">Sichere dir eine persönliche 1-zu-1 Passformberatung ohne Wartezeit im Store.</p>
+                
+                <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Name *</label>
+                        <input type="text" required placeholder="Dein vollständiger Name" class="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:border-leather-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">E-Mail oder Telefon *</label>
+                        <input type="text" required placeholder="z. B. moin@beispiel.de" class="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:border-leather-600">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Wunschtag</label>
+                            <input type="date" required class="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:border-leather-600 text-gray-700">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Uhrzeit</label>
+                            <select class="w-full border border-gray-300 px-3 py-2.5 rounded-lg text-sm focus:outline-none focus:border-leather-600 text-gray-700">
+                                <option>10:00 Uhr</option>
+                                <option>12:00 Uhr</option>
+                                <option>15:00 Uhr</option>
+                                <option>17:00 Uhr</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-leather-600 hover:bg-leather-500 text-white font-semibold py-3 rounded-lg text-sm transition mt-2 shadow">
+                        Terminanfrage Senden
+                    </button>
+                </form>
+            </div>
+
+            <!-- Modal Success Message -->
+            <div id="modal-success-content" class="hidden text-center py-6">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    ✓
+                </div>
+                <h4 class="font-serif-heading text-xl font-bold text-indigo-950 mb-2">Vielen Dank!</h4>
+                <p class="text-sm text-gray-600 mb-6">Wir haben deine Terminanfrage erhalten und melden uns in Kürze zur Bestätigung.</p>
+                <button onclick="closeBookingModal()" class="bg-indigo-950 text-white px-6 py-2.5 rounded-lg text-xs font-semibold">Schließen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Page Navigation Simulation
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show selected page
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Navigation Button Active States
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-leather-500', 'font-bold');
+                btn.classList.add('text-gray-300');
+            });
+
+            const activeBtn = document.getElementById('nav-' + pageId);
+            if (activeBtn) {
+                activeBtn.classList.add('text-leather-500', 'font-bold');
+                activeBtn.classList.remove('text-gray-300');
+            }
+
+            // Close Mobile Menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            menu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        // Booking Modal Controls
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('modal-form-content').classList.remove('hidden');
+            document.getElementById('modal-success-content').classList.add('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            document.getElementById('modal-form-content').classList.add('hidden');
+            document.getElementById('modal-success-content').classList.remove('hidden');
+        }
+
+        // Fit Finder Quiz Logic
+        let quizSelection = { gender: '', fit: '' };
+
+        function selectQuizOption(category, value) {
+            quizSelection[category] = value;
+
+            if (category === 'gender') {
+                document.getElementById('quiz-step-1').classList.add('hidden');
+                document.getElementById('quiz-step-2').classList.remove('hidden');
+            } else if (category === 'fit') {
+                document.getElementById('quiz-step-2').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                
+                // Customize recommendation text based on selection
+                const resultText = document.getElementById('quiz-result-text');
+                resultText.innerText = `Klasse! Für deine Auswahl (${quizSelection.gender.toUpperCase()} – ${quizSelection.fit.toUpperCase()}) haben wir über 15 verschiedene Modelle & Waschungsvarianten im Store vorrätig.`;
+            }
+        }
+
+        function resetQuiz() {
+            quizSelection = { gender: '', fit: '' };
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-step-2').classList.add('hidden');
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+        }
+
+        // Initialize active state on load
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
 </body>
 </html>
